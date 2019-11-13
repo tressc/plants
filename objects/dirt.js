@@ -3,7 +3,7 @@ class Dirt {
         this.store = store;
         this.status = 'dry';
 
-        const water = () => {
+        this.water = () => {
             this.status = 'wet';
         }
 
@@ -11,10 +11,8 @@ class Dirt {
             this.status = 'dry';
         }
 
-        store.addEvent('rain', water);
+        store.addEvent('rain', this.water);
         store.addEvent('sun', sun);
-
-        this.water = water;
     }
 }
 

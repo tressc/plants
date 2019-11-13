@@ -22,7 +22,7 @@ class Weather {
     }
 
     chooseRandom() {
-        const idx = Math.floor(Math.random() * 2);
+        const idx = Math.floor(Math.random() * this.weatherTypes.length);
         return this.weatherTypes[idx];
     }
 }
