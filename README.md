@@ -16,6 +16,8 @@ It is my hope that in this game you will be able to do all of those things, and 
 
 This phase is focusing on the core game engine, and developing a way of modeling the various systems and relationships found on a simple farm.
 
+![screenshot](https://i.imgur.com/h3mlMUL.png)
+
 I have chosen a command line UI for this phase in order to speed up prototyping. The goal is to uncouple the rendering & UI logic from the game logic as much as possible. This makes it easier to iterate and collaborate. It will also hopefully aid in the transition to a modern framework such as Unity, when that time comes.
 
 #### Observable:
