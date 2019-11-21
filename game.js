@@ -13,6 +13,8 @@ for (let i = 0; i < 25; i++) {
 }
 
 function printTiles() {
+    console.clear();
+    console.log(time.day)
     for (let i = 0; i < 5; i++) {
         console.log(
             tiles.slice(i * 5, i * 5 + 5)
@@ -23,17 +25,6 @@ function printTiles() {
     console.log();
 }
 
-time.newDay();
 printTiles();
-time.newDay();
-printTiles();
-time.newDay();
-printTiles();
-time.newDay();
-printTiles();
-time.newDay();
-printTiles();
-time.newDay();
-printTiles();
-time.newDay();
-printTiles();
+time.start();
+setInterval(printTiles, 3000)

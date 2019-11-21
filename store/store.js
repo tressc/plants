@@ -8,7 +8,6 @@ class Store extends Observable {
 
     setState(newState) {
         this.state = Object.assign({}, this.state, newState);
-        console.log(this.state.weather)
     }
 }
 
