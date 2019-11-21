@@ -9,6 +9,8 @@ const weather = new Weather(store);
 
 
 store.addEvent('newHour', drawClock)
+// optimize to only draw the delta?
+// for instance, the frame only needs to be drawn one time...
 
 const frameX = 6;
 const frameY = 6;

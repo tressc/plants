@@ -40,6 +40,7 @@ class Time {
 
         this.store.fire('newHour');
         if (this.time === 12 && this.meridian === 'AM') {
+            // any reason why this should happen after/before 'newHour'?
             this.newDay();
         }
     }
@@ -49,6 +50,8 @@ class Time {
     }
 
     pause() {
+        // if the interval is big enough, pausing could easy break
+        // the in-game clock...
         clearInterval(this.interval);
     }
 }
