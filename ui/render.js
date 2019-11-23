@@ -40,15 +40,15 @@ class Render {
         if (dir === 'LEFT' && cursX > 1) this.state.cursX -= 3;
         if (dir === 'RIGHT' && cursX < frameX * 3 - 2) this.state.cursX += 3;
     
-        term.moveTo(this.state.cursX, this.state.cursY).white('\u2824\u2824\u2824');
-        term.moveTo(this.state.cursX, this.state.cursY + 2).white('\u2809\u2809\u2809');
+        term.moveTo(this.state.cursX, this.state.cursY).magenta('\u2824\u2824\u2824');
+        term.moveTo(this.state.cursX, this.state.cursY + 2).magenta('\u2809\u2809\u2809');
     }
     
     drawInitCursor() {
         const { cursX, cursY } = this.state;        
 
-        term.moveTo(cursX, cursY).white('\u2824\u2824\u2824');
-        term.moveTo(cursX, cursY + 2).white('\u2809\u2809\u2809');
+        term.moveTo(cursX, cursY).magenta('\u2824\u2824\u2824');
+        term.moveTo(cursX, cursY + 2).magenta('\u2809\u2809\u2809');
     }
     
     openMenu() {
@@ -61,7 +61,7 @@ class Render {
     
         for (let i = 0; i < menuItems.length; i++) {
             term.moveTo(frameX * 3 + 2, i + 2)
-            if (i === menuSelect) {
+            if (i === this.state.menuSelect) {
                 term.bgWhite.black.bold(menuItems[i]);
             } else {
                 term.white(menuItems[i]);
@@ -110,7 +110,7 @@ class Render {
         term.moveTo(frameX * 3 + 2, frameY * 2 - 1).white('\u2503');
     
         if (weather === 'rain') {
-            term.cyan(' \u2601 ');
+            term.cyan(' \u2602 ');
         } else {
             term.yellow(' \u2600 ');
         }
@@ -146,7 +146,7 @@ class Render {
                 } else if (type > 1) {
                     term.color256(22)('\u03D2 ');
                 } else {
-                    term.color256(22)('\u03B9 ');
+                    term.color256(22)('\u01C2 ');
                 }
     
             }
