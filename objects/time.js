@@ -20,12 +20,26 @@ class Time {
         this.newHour = this.newHour.bind(this);
 
         this.interval = null;
+
+        this.newDay = this.newDay.bind(this);
+        this.newHour = this.newHour.bind(this);
+        this.start = this.start.bind(this);
+        this.pause = this.pause.bind(this);
+
+        this.store.addEvent("timePause", this.pause);
+        this.store.addEvent("timeStart", this.start);
     }
 
     newDay() {
         this.day += 1;
         this.dayName = this.weekDays[this.day % 7];
 
+
+        this.store.setState({
+            time: {
+                dayName: this.dayName
+            }
+        });
         this.store.fire('newDay');
     }
 
@@ -37,6 +51,14 @@ class Time {
         }
         let leadingZero = this.time < 10 ? '0' : '';
         this.timeName = leadingZero + this.time + ':00' + this.meridian;
+
+        this.store.setState({
+            time: {
+                ...this.store.state.time,
+                timeName: this.timeName,
+                meridian: this.meridian
+            }
+        });
 
         this.store.fire('newHour');
         if (this.time === 12 && this.meridian === 'AM') {

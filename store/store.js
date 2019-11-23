@@ -3,7 +3,12 @@ const Observable = require('../abstracts/observable.js');
 class Store extends Observable {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            time: {
+                timeName: '06:00AM',
+                dayName: 'SUN'
+            }
+        };
     }
 
     setState(newState) {

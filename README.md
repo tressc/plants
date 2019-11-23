@@ -56,6 +56,17 @@ class Observable {
         })
     }
 }
+
+class Store extends Observable {
+    constructor() {
+        super();
+        this.state = {};
+    }
+
+    setState(newState) {
+        this.state = Object.assign({}, this.state, newState);
+    }
+}
 ```
 
 While this ideal for one-to-many relationships, many of the one-to-one relationships, for instance such as between a tile of dirt and its resident plant, can circumvent the store altogether and talk directly to each other.
