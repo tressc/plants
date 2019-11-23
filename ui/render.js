@@ -40,8 +40,8 @@ class Render {
         if (dir === 'LEFT' && cursX > 1) this.state.cursX -= 3;
         if (dir === 'RIGHT' && cursX < frameX * 3 - 2) this.state.cursX += 3;
     
-        term.moveTo(cursX, cursY).white('\u2824\u2824\u2824');
-        term.moveTo(cursX, cursY + 2).white('\u2809\u2809\u2809');
+        term.moveTo(this.state.cursX, this.state.cursY).white('\u2824\u2824\u2824');
+        term.moveTo(this.state.cursX, this.state.cursY + 2).white('\u2809\u2809\u2809');
     }
     
     drawInitCursor() {
@@ -89,11 +89,11 @@ class Render {
         if (dir === 'UP' && menuSelect > 0) {
             term.moveTo(frameX * 3 + 2, menuSelect + 2).white(menuItems[menuSelect]);
             this.state.menuSelect -= 1;
-            term.moveTo(frameX * 3 + 2, menuSelect + 2).bgWhite.black.bold(menuItems[menuSelect]);
+            term.moveTo(frameX * 3 + 2, this.state.menuSelect + 2).bgWhite.black.bold(menuItems[this.state.menuSelect]);
         } else if (dir === "DOWN" && menuSelect < menuItems.length - 1) {
             term.moveTo(frameX * 3 + 2, menuSelect + 2).white(menuItems[menuSelect]);
             this.state.menuSelect += 1;
-            term.moveTo(frameX * 3 + 2, menuSelect + 2).bgWhite.black.bold(menuItems[menuSelect]);
+            term.moveTo(frameX * 3 + 2, this.state.menuSelect + 2).bgWhite.black.bold(menuItems[this.state.menuSelect]);
         }
     }
     
