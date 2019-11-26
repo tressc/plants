@@ -1,18 +1,29 @@
-#### Things you can do with plants:
-* grow them
-* discover them
-* eat them
-* learn from them
-* breed them
-* sell them
-* care for them
-* study them
-* trade them
-* cook with them
+### Some things you can do with plants:
+* grow
+* discover
+* breed
+* sell
+* cook
+* study
+* brew
+* distill
+* trade
+* eat
 
 It is my hope that in this game you will be able to do all of those things, and more!
 
-#### Phase I:
+### Testing:
+
+If you would like to help playtest the game:
+1. Clone or download this repo.
+2. In the root directory, run:
+    ```bash
+    npm install
+    node game.js
+    ```
+3. Raise an issue here or email me directly: tresscd@gmail.com
+
+### Phase I:
 
 This phase is focusing on the core game engine, and developing a way of modeling the various systems and relationships found on a simple farm.
 
@@ -20,7 +31,7 @@ This phase is focusing on the core game engine, and developing a way of modeling
 
 I have chosen a command line UI for this phase in order to speed up prototyping. The goal is to uncouple the rendering & UI logic from the game logic as much as possible. This makes it easier to iterate and collaborate. It will also hopefully aid in the transition to a modern framework such as Unity, when that time comes.
 
-#### Observable:
+### Observable:
 
 The core concept driving the game engine is a global object currently called the **store**. It's behavior is loosely modeled off of **Redux**.
 
@@ -69,6 +80,6 @@ class Store extends Observable {
 }
 ```
 
-While this ideal for one-to-many relationships, many of the one-to-one relationships, for instance such as between a tile of dirt and its resident plant, can circumvent the store altogether and talk directly to each other.
+While this ideal for one-to-many relationships, one-to-one relationships (i.e. for instance such as between a tile of dirt and its resident plant) can often circumvent the store altogether and talk directly to each other.
 
 Down the road it may make sense to divide the store in two, making one half responsible for event management and the other responsible for global state.
