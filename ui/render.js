@@ -1,4 +1,4 @@
-var term = require( 'terminal-kit' ).terminal ;
+const term = require( 'terminal-kit' ).terminal;
 
 class Render {
     constructor(store, config) {
