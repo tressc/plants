@@ -4,6 +4,7 @@ class Store extends Observable {
     constructor() {
         super();
         this.state = {
+            weather: 'frost',
             time: {
                 timeName: '06:00AM',
                 dayName: 'SUN'

@@ -68,7 +68,7 @@ class Time {
     }
 
     start() {
-        this.interval = setInterval(this.newHour, 500);
+        this.interval = setInterval(this.newHour, 100);
     }
 
     pause() {

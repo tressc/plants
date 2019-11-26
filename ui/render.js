@@ -111,9 +111,13 @@ class Render {
     
         if (weather === 'rain') {
             term.cyan(' \u2602 ');
-        } else {
+        } else if (weather === 'sun') {
             term.yellow(' \u2600 ');
+        } else if (weather === 'frost') {
+            term.white(' \u2744 ')
         }
+
+
         term.white(`${timeName} ${dayName} \u2503`)
     
         term.moveTo(frameX * 3 + 2, frameY * 2 - 0).white('\u2517');

@@ -5,6 +5,7 @@ class Weather {
         this.weatherTypes = [
             'sun',
             'rain',
+            'frost'
         ]
 
         this.store.addEvent('newDay', () => {

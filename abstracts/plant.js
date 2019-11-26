@@ -1,7 +1,7 @@
 const Observable = require('./observable.js');
 
-class Plant extends Observable {
-    constructor(seed, config) {
+class Plant {
+    constructor(seed, config, store) {
         this.dna = seed.dna;
         this.name = seed.name;
         this.traits = config.traits;
