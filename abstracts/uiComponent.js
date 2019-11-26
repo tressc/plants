@@ -8,6 +8,7 @@ class UIComponent {
         }
 
         this.draw = this.draw.bind(this);
+        this.clear = this.clear.bind(this);
     }
 
     draw() {
