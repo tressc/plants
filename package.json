@@ -1,0 +1,23 @@
+{
+  "name": "plants",
+  "version": "1.0.0",
+  "description": "plants game",
+  "main": "game.js",
+  "dependencies": {
+    "terminal-kit": "^1.31.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tressc/plants.git"
+  },
+  "author": "Colin Tress",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tressc/plants/issues"
+  },
+  "homepage": "https://github.com/tressc/plants#readme"
+}
