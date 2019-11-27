@@ -28,9 +28,6 @@ If you would like to help playtest the game:
 
 This phase is focusing on the core game engine, and developing a way of modeling the various systems and relationships found on a simple farm.
 
-11/21/2019
-![screenshot1](screenShot1.png)
-
 11/26/2019
 ![screenshot2](screenShot2.png)
 
