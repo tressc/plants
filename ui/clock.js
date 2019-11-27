@@ -20,7 +20,7 @@ class Clock extends UIComponent {
 
         this.term.moveTo(x, y);
         if (weather === 'rain') {
-            this.term.cyan('\u2602 ');
+            this.term.cyan(' \u2602 ');
         } else if (weather === 'sun') {
             this.term.yellow(' \u2600 ');
         } else if (weather === 'frost') {
