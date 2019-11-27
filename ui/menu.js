@@ -1,5 +1,4 @@
 const UIComponent = require('../abstracts/uiComponent.js');
-const term = require( 'terminal-kit' ).terminal;
 
 
 class Menu extends UIComponent {
@@ -7,12 +6,41 @@ class Menu extends UIComponent {
         super(store, term, config);
 
         this.menuItems = config.menuItems;
-        this.menuSelect = config.menuItems;
+        this.menuSelect = 0;
+
+        this.draw();
+        this.normalBorder();
+        this.collectInput();
+    }
+
+    collectInput() {
+        this.term.on( 'key' , (name, matches, data) => {
+            if (this.store.state.activeComponent === this.name) {
+                if (['UP', 'DOWN'].includes(name)) {
+                    this.moveSelect(name);
+                } else if (name === 'ENTER') {
+                    if (this.store.state.justChanged) {
+                        this.store.setState({justChanged: false});
+                        return;
+                    }
+                    this.store.fire('changeFocus', 'field');
+                }
+            }
+        });
+    }
+
+    moveSelect(dir) {
+        if (dir === 'UP' && this.menuSelect > 0) {
+            this.menuSelect -= 1;
+        } else if (dir === 'DOWN' && this.menuSelect < this.menuItems.length - 1) {
+            this.menuSelect += 1;
+        }
+        this.draw();
     }
 
     clear() {
-        const {x, y} = this.offset;
-        const { menuItems} = this;
+        const { x, y } = this.offset;
+        const { menuItems } = this;
 
 
         for (let i = 0; i < menuItems.length; i++) {

@@ -6,6 +6,9 @@ class Clock extends UIComponent {
         super(store, term, config);
 
         this.store.addEvent('newHour', this.draw)
+
+        this.draw();
+        this.normalBorder();
     }
 
     draw() {
@@ -15,28 +18,16 @@ class Clock extends UIComponent {
 
         this.term.white()
 
-        this.term.moveTo(x, y)('\u250F');
-        for (let i = 0; i < 15; i++) {
-            this.term('\u2501');
-        }
-        this.term('\u2513')
-
-        this.term.moveTo(x, y + 1)('\u2503');
+        this.term.moveTo(x, y);
         if (weather === 'rain') {
-            this.term.cyan(' \u2602 ');
+            this.term.cyan('\u2602 ');
         } else if (weather === 'sun') {
             this.term.yellow(' \u2600 ');
         } else if (weather === 'frost') {
             this.term(' \u2744 ')
         }
         this.term.white()
-        this.term(`${timeName} ${dayName} \u2503`)
-
-        this.term.moveTo(x, y + 2)('\u2517');
-        for (let i = 0; i < 15; i++) {
-            this.term('\u2501');
-        }
-        this.term('\u251B')
+        this.term(`${timeName} ${dayName}`)
     }
 }
 

@@ -4,6 +4,24 @@ const UIComponent = require('../abstracts/uiComponent.js');
 class Field extends UIComponent {
     constructor(store, term, config) {
         super(store, term, config);
+
+        this.draw();
+        this.focusBorder();
+        this.collectInput();
+    }
+
+    collectInput() {
+        this.term.on( 'key' , (name, matches, data) => {
+            if (this.store.state.activeComponent === this.name) {
+                if (name === 'ENTER') {
+                    if (this.store.state.justChanged) {
+                        this.store.setState({justChanged: false});
+                        return;
+                    }
+                    this.store.fire('changeFocus', 'menu');
+                }
+            }
+        });
     }
 
     draw() {

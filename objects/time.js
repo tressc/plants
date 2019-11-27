@@ -28,6 +28,7 @@ class Time {
 
         this.store.addEvent("timePause", this.pause);
         this.store.addEvent("timeStart", this.start);
+        this.store.addEvent("gameStart", this.start);
     }
 
     newDay() {
@@ -59,7 +60,6 @@ class Time {
                 meridian: this.meridian
             }
         });
-
         this.store.fire('newHour');
         if (this.time === 12 && this.meridian === 'AM') {
             // any reason why this should happen after/before 'newHour'?
