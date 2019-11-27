@@ -15,7 +15,6 @@ class Field extends UIComponent {
             if (this.store.state.activeComponent === this.name) {
                 if (name === 'ENTER') {
                     if (this.store.state.justChanged) {
-                        this.store.setState({justChanged: false});
                         return;
                     }
                     this.store.fire('changeFocus', 'menu');

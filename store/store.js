@@ -12,10 +12,15 @@ class Store extends Observable {
             }
         };
 
-        this.addEvent('changeFocus', componentName => this.setState({
-            activeComponent: componentName,
-            justChanged: true
-        }))
+        this.addEvent('changeFocus', componentName => {
+            this.setState({
+                activeComponent: componentName,
+                justChanged: true
+            });
+            setTimeout(() => {
+                this.setState({justChanged: false})
+            }, 0)
+        })
     }
 
     setState(newState) {

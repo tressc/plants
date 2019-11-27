@@ -8,8 +8,18 @@ class Menu extends UIComponent {
         this.menuItems = config.menuItems;
         this.menuSelect = 0;
 
-        this.draw();
-        this.normalBorder();
+        this.store.addEvent('changeFocus', (name) => {
+            if (name === this.name) {
+                this.draw();
+                this.focusBorder();
+            } else {
+                this.clear();
+                this.clearBorder();
+            }
+        })
+
+        // this.draw();
+        // this.normalBorder();
         this.collectInput();
     }
 
@@ -20,7 +30,6 @@ class Menu extends UIComponent {
                     this.moveSelect(name);
                 } else if (name === 'ENTER') {
                     if (this.store.state.justChanged) {
-                        this.store.setState({justChanged: false});
                         return;
                     }
                     this.store.fire('changeFocus', 'field');
@@ -47,7 +56,7 @@ class Menu extends UIComponent {
             this.term.moveTo(x, y + i);
 
             for (let j = 0; j < menuItems[i].length; j++) {
-                term(' ');
+                this.term(' ');
             }
         }
     }

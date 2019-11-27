@@ -15,10 +15,11 @@ class UIComponent {
         const normalBorder = this.drawBorder();
         const focusBorder = this.drawBorder(this.term.magenta);
 
-        this.draw = this.draw.bind(this);
-        this.clear = this.clear.bind(this);
         this.normalBorder = normalBorder.bind(this);
         this.focusBorder = focusBorder.bind(this);
+        this.draw = this.draw.bind(this);
+        this.clear = this.clear.bind(this);
+        this.clearBorder = this.clearBorder.bind(this);
 
         this.store.addEvent('changeFocus', componentName => {
             if (componentName === config.name) {
