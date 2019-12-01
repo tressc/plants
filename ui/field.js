@@ -27,7 +27,7 @@ class Field extends UIComponent {
         const {x, y} = this.offset;
 
         for (let i = 0; i < 6; i++) {
-            this.term.moveTo(x, y + i * 2);
+            this.term.moveTo(x, y + 1 + i * 2);
             
             for (let j = 0; j < 6; j++) {
                 if (Math.random() * 2 > 1) {

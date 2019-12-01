@@ -34,7 +34,7 @@ I have chosen a command line UI for this phase in order to speed up prototyping.
 
 ### Observable:
 
-The core concept driving the game engine is a global object currently called the **store**. It's behavior is loosely modeled off of **Redux**.
+The game engine is primarily built using the observer pattern, loosely modeled off of **Redux**. A singleton, called the **store** for now, acts as a kind of global state for the entire game.
 
 Most game objects have a reference to the store, and can fire events on it. Objects can also subscribe to events, in order to perform any number of tasks when such an event is fired.
 
@@ -69,10 +69,31 @@ class Observable {
     }
 }
 
+
 class Store extends Observable {
     constructor() {
         super();
-        this.state = {};
+        // example initial state. later this json will live elsewhere.
+        this.state = {
+            activeComponent: 'field',
+            weather: 'frost',
+            time: {
+                timeName: '06:00AM',
+                dayName: 'SUN'
+            }
+        };
+
+        this.addEvent('changeFocus', componentName => {
+            this.setState({
+                activeComponent: componentName,
+                justChanged: true
+            });
+            // this is a temporary workaround for an event propogation issue
+            // should ultimately be addressed with a queue or similar
+            setTimeout(() => {
+                this.setState({justChanged: false})
+            }, 0)
+        })
     }
 
     setState(newState) {

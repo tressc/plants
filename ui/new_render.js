@@ -28,7 +28,7 @@ class Render {
             name: "field",
             xOffset: 2,
             yOffset: 2,
-            height: 11,
+            height: 13,
             width: 18
         };
         const menuConfig = {
@@ -47,7 +47,7 @@ class Render {
         const clockConfig = {
             name: "clock",
             xOffset: 22,
-            yOffset: 12,
+            yOffset: 14,
             height: 1,
             width: 15
         };
