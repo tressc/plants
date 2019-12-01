@@ -20,6 +20,7 @@ class Menu extends UIComponent {
 
         // this.draw();
         // this.normalBorder();
+        this.longest = this.longest.bind(this);
         this.collectInput();
     }
 
@@ -50,15 +51,41 @@ class Menu extends UIComponent {
     clear() {
         const { x, y } = this.offset;
         const { menuItems } = this;
+        const max = this.longest();
 
 
         for (let i = 0; i < menuItems.length; i++) {
             this.term.moveTo(x, y + i);
 
-            for (let j = 0; j < menuItems[i].length; j++) {
+            for (let j = 0; j < max; j++) {
                 this.term(' ');
             }
         }
+    }
+
+    longest() {
+        const { menuItems } = this;
+
+        let max = 0;
+
+        for (let i = 0; i < menuItems.length; i++) {
+            const menuItem = menuItems[i];
+            if (menuItem.length > max) {
+                max = menuItem.length;
+            }
+        }
+        return max;
+    }
+
+    rightAlign(item) {
+        let max = this.longest();
+        let buffer = '';
+
+        while (max > item.length) {
+            buffer += ' ';
+            max--;
+        }
+        return buffer + item;
     }
 
     draw() {
@@ -69,9 +96,9 @@ class Menu extends UIComponent {
             this.term.moveTo(x, y + i);
 
             if (i === menuSelect) {
-                this.term.bgWhite.black.bold(menuItems[i]);
+                this.term.bgWhite.black.bold(this.rightAlign(menuItems[i]));
             } else {
-                this.term.white(menuItems[i]);
+                this.term.white(this.rightAlign(menuItems[i]));
             }
         }
     }
