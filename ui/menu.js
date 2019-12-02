@@ -34,6 +34,7 @@ class Menu extends UIComponent {
                         return;
                     }
                     this.store.fire('changeFocus', 'field');
+                    this.store.fire('timeStart');
                 }
             }
         });

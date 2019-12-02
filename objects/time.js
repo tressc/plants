@@ -13,7 +13,7 @@ class Time {
         this.day = 0;
         this.dayName = 'SUN';
         this.time = 6;
-        this.meridian = "AM"
+        this.meridian = 'AM'
         this.timeName = '06:00AM';
 
         this.newDay = this.newDay.bind(this);
@@ -26,9 +26,9 @@ class Time {
         this.start = this.start.bind(this);
         this.pause = this.pause.bind(this);
 
-        this.store.addEvent("timePause", this.pause);
-        this.store.addEvent("timeStart", this.start);
-        this.store.addEvent("gameStart", this.start);
+        this.store.addEvent('timePause', this.pause);
+        this.store.addEvent('timeStart', this.start);
+        this.store.addEvent('gameStart', this.start);
     }
 
     newDay() {
@@ -68,7 +68,7 @@ class Time {
     }
 
     start() {
-        this.interval = setInterval(this.newHour, 100);
+        this.interval = setInterval(this.newHour, 500);
     }
 
     pause() {

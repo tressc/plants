@@ -18,6 +18,7 @@ class Field extends UIComponent {
                         return;
                     }
                     this.store.fire('changeFocus', 'menu');
+                    this.store.fire('timePause');
                 }
             }
         });
@@ -27,7 +28,7 @@ class Field extends UIComponent {
         const {x, y} = this.offset;
 
         for (let i = 0; i < 6; i++) {
-            this.term.moveTo(x, y + 1 + i * 2);
+            this.term.moveTo(x + 2, y + 1 + i * 2);
             
             for (let j = 0; j < 6; j++) {
                 if (Math.random() * 2 > 1) {

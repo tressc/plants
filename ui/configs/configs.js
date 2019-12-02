@@ -4,18 +4,18 @@ module.exports = {
         xOffset: 2,
         yOffset: 2,
         height: 13,
-        width: 18
+        width: 22
     },
     cursorConfig: {
         name: "cursor",
-        xOffset: 2,
+        xOffset: 4,
         yOffset: 2,
         height: 13,
         width: 18
     },
     menuConfig: {
         name: "menu",
-        xOffset: 22,
+        xOffset: 26,
         yOffset: 2,
         height: 4,
         width: 9,
@@ -28,7 +28,7 @@ module.exports = {
     },
     clockConfig: {
         name: "clock",
-        xOffset: 22,
+        xOffset: 26,
         yOffset: 14,
         height: 1,
         width: 15
