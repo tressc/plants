@@ -58,7 +58,7 @@ class Menu extends UIComponent {
         for (let i = 0; i < menuItems.length; i++) {
             this.term.moveTo(x, y + i);
 
-            for (let j = 0; j < max; j++) {
+            for (let j = 0; j < max + 6; j++) { // don't hard code this
                 this.term(' ');
             }
         }
@@ -82,7 +82,7 @@ class Menu extends UIComponent {
         let max = this.longest();
         let buffer = '';
 
-        while (max > item.length) {
+        while (max + 6 > item.length) { // don't hard code this either
             buffer += ' ';
             max--;
         }

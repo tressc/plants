@@ -10,6 +10,10 @@ class Cursor extends UIComponent {
             cursorY: 0
         }
 
+        this.store.addEvent('moveCursor', newPositions => {
+            this.store.setState(newPositions);
+        })
+
         this.moveCursor = this.moveCursor.bind(this);
         this.normalBorder = () => null; // don't ever draw the border;
 
@@ -31,7 +35,7 @@ class Cursor extends UIComponent {
     moveCursor(dir) {
         this.clear();
 
-        let { cursorX, cursorY } = this.state;
+        let { cursorX, cursorY } = this.store.state;
 
         if (dir === 'UP' && cursorY > 0) {
             cursorY -= 1;
@@ -43,13 +47,13 @@ class Cursor extends UIComponent {
             cursorX += 1;
         }
 
-        this.state = {cursorX, cursorY}; // update global state also?
+        this.store.fire('moveCursor', {cursorX, cursorY});
         this.draw();
     }
 
     clear() {
         const {x, y} = this.offset;
-        const {cursorX, cursorY} = this.state
+        const {cursorX, cursorY} = this.store.state;
 
         this.term.moveTo(x + cursorX * 3, y + cursorY * 2)('   ');
         this.term.moveTo(x + cursorX * 3, y + cursorY * 2 + 2)('   ');
@@ -57,7 +61,7 @@ class Cursor extends UIComponent {
 
     draw() {
         const {x, y} = this.offset;
-        const {cursorX, cursorY} = this.state
+        const {cursorX, cursorY} = this.store.state;
 
         this.term.white()
         this.term.moveTo(x + cursorX * 3, y + cursorY * 2)('\u2824\u2824\u2824');

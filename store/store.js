@@ -4,6 +4,8 @@ class Store extends Observable {
     constructor() {
         super();
         this.state = {
+            cursorX: 0,
+            cursorY: 0,
             activeComponent: 'field',
             weather: 'frost',
             time: {

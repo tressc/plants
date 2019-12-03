@@ -1,9 +1,10 @@
 const term = require('terminal-kit').terminal;
+const Config = require('./configs/configs.js');
 const Field = require('./field');
 const Clock = require('./clock');
 const Menu = require('./menu');
 const Cursor = require('./cursor');
-const Config = require('./configs/configs.js');
+const Info = require('./info');
 
 const Store = require('../store/store.js');
 
@@ -29,6 +30,7 @@ class Render {
         this.clock = new Clock(this.store, term, Config.clockConfig);
         this.menu = new Menu(this.store, term, Config.menuConfig);
         this.cursor = new Cursor(this.store, term, Config.cursorConfig);
+        this.info = new Info(this.store, term, Config.infoConfig);
     }
 }
 

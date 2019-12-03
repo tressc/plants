@@ -13,7 +13,7 @@ class UIComponent {
         this.name = config.name;
         
         const normalBorder = this.drawBorder();
-        const focusBorder = this.drawBorder(this.term.magenta);
+        const focusBorder = this.drawBorder(this.term.white);
 
         this.normalBorder = normalBorder.bind(this);
         this.focusBorder = focusBorder.bind(this);
