@@ -7,12 +7,14 @@ class Menu extends UIComponent {
 
         this.menuItems = config.menuItems;
         this.menuSelect = 0;
+        this.saving = false;
 
         this.store.addEvent('changeFocus', (name) => {
             if (name === this.name) {
                 this.draw();
                 this.focusBorder();
             } else {
+                this.menuSelect = 0;
                 this.clear();
                 this.clearBorder();
             }
@@ -26,6 +28,8 @@ class Menu extends UIComponent {
 
     collectInput() {
         this.term.on( 'key' , (name, matches, data) => {
+            if (this.saving) return;
+
             if (this.store.state.activeComponent === this.name) {
                 if (['UP', 'DOWN'].includes(name)) {
                     this.moveSelect(name);
@@ -33,11 +37,45 @@ class Menu extends UIComponent {
                     if (this.store.state.justChanged) {
                         return;
                     }
+                    if (this.menuSelect === this.menuItems.length - 1) {
+                        this.loadMask();
+                        return;
+                    }
                     this.store.fire('changeFocus', 'field');
                     this.store.fire('timeStart');
                 }
             }
         });
+    }
+
+    loadMask() {
+        this.saving = true;
+        const { x, y } = this.offset;
+        const frames = [
+			"⠋",
+			"⠙",
+			"⠹",
+			"⠸",
+			"⠼",
+			"⠴",
+			"⠦",
+			"⠧",
+			"⠇",
+			"⠏"
+        ];
+        let idx = 0;
+        const interval = setInterval(() => {
+            this.term.moveTo(x, y + 3).bgWhite.black(frames[idx]);
+            idx = (idx + 1) % frames.length;
+        }, 80);
+        
+        setTimeout(() => {
+            this.saving = false;
+            clearInterval(interval);
+            this.term.moveTo(x, y + 3).bgWhite(' ');
+            this.store.fire('changeFocus', 'field');
+            this.store.fire('timeStart');
+        }, 3000);
     }
 
     moveSelect(dir) {
