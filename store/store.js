@@ -1,18 +1,9 @@
 const Observable = require('../abstracts/observable.js');
 
 class Store extends Observable {
-    constructor() {
+    constructor(state={}) {
         super();
-        this.state = {
-            cursorX: 0,
-            cursorY: 0,
-            activeComponent: 'field',
-            weather: 'frost',
-            time: {
-                timeName: '06:00AM',
-                dayName: 'SUN'
-            }
-        };
+        this.state = state;
 
         this.addEvent('changeFocus', componentName => {
             this.setState({
