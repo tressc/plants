@@ -1,7 +1,7 @@
 const Store = require('./store/store.js');
 const Time = require('./objects/time.js');
 const Weather = require('./objects/weather.js');
-const Render = require('./ui/new_render.js');
+const Render = require('./ui/render.js');
 
 const store = new Store();
 const time = new Time(store);
