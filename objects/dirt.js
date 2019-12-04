@@ -2,13 +2,18 @@ class Dirt {
     constructor(store) {
         this.store = store;
         this.status = 'dry';
+        this.plant = null;
 
         this.water = () => {
-            this.status = 'wet';
+            if (Math.floor(Math.random() * 2) < 1) {
+                this.status = 'wet';
+            }
         }
 
         const sun = () => {
-            this.status = 'dry';
+            if (Math.floor(Math.random() * 2) < 1) {
+                this.status = 'dry';
+            }
         }
 
         store.addEvent('rain', this.water);
