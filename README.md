@@ -28,7 +28,7 @@ If you would like to help playtest the game:
 
 This phase is focusing on the core game engine, and developing a way of modeling the various systems and relationships found on a simple farm.
 
-![screenshot](https://media.giphy.com/media/loAmPsrXzPYdruWSPv/giphy.gif)
+![screenshot](https://media.giphy.com/media/KzuIwrHZW8yOEh7hD0/giphy.gif)
 
 I have chosen a command line UI for this phase in order to speed up prototyping. The goal is to uncouple the rendering & UI logic from the game logic as much as possible. This makes it easier to iterate and collaborate. It will also hopefully aid in the transition to a modern framework such as Unity, when that time comes.
 

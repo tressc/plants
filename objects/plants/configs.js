@@ -2,8 +2,9 @@ module.exports = {
     wheat: {
         name: 'WHEAT',
         sprites: {
-            2: '\u03B3',
-            5: '\u03A8',
+            2: '\u0724',
+            4: '\u03B3',
+            6: '\u03A8',
         },
         color: 192
     },
