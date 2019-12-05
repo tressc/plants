@@ -1,4 +1,6 @@
 const Dirt = require('./dirt.js')
+const Plant = require('../abstracts/plant.js') // for testing
+const plantConfig = require('./plants/configs.js');
 
 class Field {
     constructor(store) {
@@ -9,7 +11,15 @@ class Field {
             const row = [];
             
             for (let j = 0; j < 6; j++) {
-                row.push(new Dirt(this.store));
+                const dirt = new Dirt(this.store);
+
+                if (Math.floor(Math.random() * 10) > 1) {
+                    const type = ['wheat', 'pumpkin'][Math.floor(Math.random() * 2)]
+                    const plant = new Plant(this.store, dirt, type, plantConfig[type]);
+                    dirt.plant = plant;
+                }
+                
+                row.push(dirt);
             }
             this.tiles.push(row);
         }

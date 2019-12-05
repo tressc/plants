@@ -30,8 +30,14 @@ class Info extends UIComponent {
 
         this.term.white();
         this.term.moveTo(x, y);
+        this.term('        ')
+        this.term.moveTo(x, y);
 
-        this.term('DIRT');
+        if (tile.plant) {
+            this.term(tile.plant.name);
+        } else {
+            this.term('DIRT');
+        }
         // this.term.moveTo(x, y + 1)(`AGE: ${'0' + (idx % 10)} DAYS`);
 
         // if (this.store.state.fruits.includes(idx)) {
@@ -42,7 +48,7 @@ class Info extends UIComponent {
         // }
 
         this.term.moveTo(x, y + 2)
-        if (tile.status === 'dry') {
+        if (tile.plant && tile.status === 'dry') {
             this.term.cyan('NEEDS WATER');
         } else {
             this.term('           ');

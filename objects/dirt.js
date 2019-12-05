@@ -5,9 +5,7 @@ class Dirt {
         this.plant = null;
 
         this.water = () => {
-            if (Math.floor(Math.random() * 2) < 1) {
-                this.status = 'wet';
-            }
+            this.status = 'wet';
         }
 
         const sun = () => {

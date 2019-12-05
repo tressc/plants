@@ -39,12 +39,16 @@ class Field extends UIComponent {
                 const plant = tile.plant;
 
                 if (tile.status === 'wet') {
-                    this.term.cyan('\u2818  ');
+                    this.term.cyan('\u2818');
                 } else {
-                    this.term('   ');
+                    this.term(' ');
                 }
 
-                // if (tile.plant)
+                if (plant) {
+                    this.term.color256(plant.color)(plant.sprite + ' ');
+                } else {
+                    this.term('  ');
+                }
             }
         }
     }

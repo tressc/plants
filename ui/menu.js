@@ -75,7 +75,7 @@ class Menu extends UIComponent {
             this.term.moveTo(x, y + 3).bgWhite(' ');
             this.store.fire('changeFocus', 'field');
             this.store.fire('timeStart');
-        }, 3000);
+        }, 2000);
     }
 
     moveSelect(dir) {
