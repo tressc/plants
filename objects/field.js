@@ -14,7 +14,7 @@ class Field {
                 const dirt = new Dirt(this.store);
 
                 if (Math.floor(Math.random() * 10) > 1) {
-                    const type = ['wheat', 'pumpkin'][Math.floor(Math.random() * 2)]
+                    const type = ['rice', 'mikan'][Math.floor(Math.random() * 2)]
                     const plant = new Plant(this.store, dirt, type, plantConfig[type]);
                     dirt.plant = plant;
                 }

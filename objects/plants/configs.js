@@ -1,6 +1,6 @@
 module.exports = {
-    wheat: {
-        name: 'WHEAT',
+    rice: {
+        name: 'rice',
         sprites: {
             2: '\u0724',
             4: '\u03B3',
@@ -8,8 +8,8 @@ module.exports = {
         },
         color: 192
     },
-    pumpkin: {
-        name: 'PUMPKIN',
+    mikan: {
+        name: 'mikan',
         sprites: {
             1: '\u0840',
             3: '\u10D2',

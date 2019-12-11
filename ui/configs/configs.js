@@ -20,10 +20,14 @@ module.exports = {
         height: 4,
         width: 15,
         menuItems: [
-            'CHARACTER',
-            'ITEMS',
-            'MAP',
-            'SAVE'
+            'character',
+            'item',
+            'map',
+            'save'
+            // 'CHARACTER',
+            // 'ITEMS',
+            // 'MAP',
+            // 'SAVE'
         ]
     },
     clockConfig: {
@@ -45,6 +49,12 @@ module.exports = {
         xOffset: 26,
         yOffset: 11,
         height: 9,
-        width: 15
+        width: 15,
+        heldItems: [
+            'watering can',
+            'scythe',
+            'rice seed',
+            'mikan seed'
+        ]
     }
 }

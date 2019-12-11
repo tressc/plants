@@ -2,19 +2,26 @@ class Time {
     constructor(store) {
         this.store = store;
         this.weekDays = [
-            'SUN',
-            'MON',
-            'TUE',
-            'WED',
-            'TRS',
-            'FRI',
-            'SAT'
+            'sun',
+            'mon',
+            'tue',
+            'wed',
+            'trs',
+            'fri',
+            'sat'
+            // 'SUN',
+            // 'MON',
+            // 'TUE',
+            // 'WED',
+            // 'TRS',
+            // 'FRI',
+            // 'SAT'
         ]
         this.day = 0;
-        this.dayName = 'SUN';
+        this.dayName = 'sun';
         this.time = 6;
-        this.meridian = 'AM'
-        this.timeName = '06:00AM';
+        this.meridian = 'am'
+        this.timeName = '06:00am';
 
         this.newDay = this.newDay.bind(this);
         this.newHour = this.newHour.bind(this);
@@ -48,7 +55,7 @@ class Time {
         let newTime = (this.time + 1) % 12;
         this.time = newTime < 1 ? 12 : newTime;
         if (this.time === 12) {
-            this.meridian = this.meridian === 'AM' ? 'PM' : 'AM';
+            this.meridian = this.meridian === 'am' ? 'pm' : 'am';
         }
         let leadingZero = this.time < 10 ? '0' : '';
         this.timeName = leadingZero + this.time + ':00' + this.meridian;
@@ -61,14 +68,14 @@ class Time {
             }
         });
         this.store.fire('newHour');
-        if (this.time === 12 && this.meridian === 'AM') {
+        if (this.time === 12 && this.meridian === 'am') {
             // any reason why this should happen after/before 'newHour'?
             this.newDay();
         }
     }
 
     start() {
-        this.interval = setInterval(this.newHour, 1000);
+        this.interval = setInterval(this.newHour, 100);
     }
 
     pause() {

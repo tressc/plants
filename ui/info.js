@@ -34,9 +34,9 @@ class Info extends UIComponent {
         this.term.moveTo(x, y);
 
         if (tile.plant) {
-            this.term(tile.plant.name);
+            this.term(tile.plant.name.toLowerCase());
         } else {
-            this.term('DIRT');
+            this.term('dirt');
         }
         // this.term.moveTo(x, y + 1)(`AGE: ${'0' + (idx % 10)} DAYS`);
 
@@ -49,7 +49,7 @@ class Info extends UIComponent {
 
         this.term.moveTo(x, y + 2)
         if (tile.plant && tile.status === 'dry') {
-            this.term.cyan('NEEDS WATER');
+            this.term.cyan('needs water');
         } else {
             this.term('           ');
         }

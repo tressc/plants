@@ -1,4 +1,5 @@
 const UIComponent = require('../abstracts/uiComponent.js');
+const rightAlign = require('./utils/rightAlign');
 
 
 class Menu extends UIComponent {
@@ -20,9 +21,6 @@ class Menu extends UIComponent {
             }
         })
 
-        // this.draw();
-        // this.normalBorder();
-        this.longest = this.longest.bind(this);
         this.collectInput();
     }
 
@@ -94,54 +92,29 @@ class Menu extends UIComponent {
     clear() {
         const { x, y } = this.offset;
         const { menuItems } = this;
-        const max = this.longest();
-
+        const { width } = this.size;
 
         for (let i = 0; i < menuItems.length; i++) {
             this.term.moveTo(x, y + i);
 
-            for (let j = 0; j < max + 6; j++) { // don't hard code this
+            for (let j = 0; j < width; j++) { // don't hard code this
                 this.term(' ');
             }
         }
     }
 
-    longest() {
-        const { menuItems } = this;
-
-        let max = 0;
-
-        for (let i = 0; i < menuItems.length; i++) {
-            const menuItem = menuItems[i];
-            if (menuItem.length > max) {
-                max = menuItem.length;
-            }
-        }
-        return max;
-    }
-
-    rightAlign(item) {
-        let max = this.longest();
-        let buffer = '';
-
-        while (max + 6 > item.length) { // don't hard code this either
-            buffer += ' ';
-            max--;
-        }
-        return buffer + item;
-    }
-
     draw() {
         const { x, y } = this.offset;
         const { menuItems, menuSelect } = this;
+        const { width } = this.size;
 
         for (let i = 0; i < menuItems.length; i++) {
             this.term.moveTo(x, y + i);
 
             if (i === menuSelect) {
-                this.term.bgWhite.black.bold(this.rightAlign(menuItems[i]));
+                this.term.bgWhite.black.bold(rightAlign(menuItems[i], width));
             } else {
-                this.term.white(this.rightAlign(menuItems[i]));
+                this.term.white(rightAlign(menuItems[i], width));
             }
         }
     }
