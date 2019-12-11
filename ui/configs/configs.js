@@ -24,10 +24,6 @@ module.exports = {
             'item',
             'map',
             'save'
-            // 'CHARACTER',
-            // 'ITEMS',
-            // 'MAP',
-            // 'SAVE'
         ]
     },
     clockConfig: {

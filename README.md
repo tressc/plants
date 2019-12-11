@@ -73,7 +73,7 @@ class Observable {
 class Store extends Observable {
     constructor() {
         super();
-        // example initial state. this info actually lives  elsewhere.
+        // example initial state. this info actually lives elsewhere.
         this.state = {
             activeComponent: 'field',
             weather: 'sun',

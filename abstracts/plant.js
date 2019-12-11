@@ -5,7 +5,7 @@ class Plant {
         this.store = store;
         this.dirt = dirt;
         this.dna = seed.dna;
-        this.name = seed.toUpperCase();
+        this.name = seed;
         this.traits = config.traits;
         this.season = config.season;
         this.age = 0;
@@ -35,8 +35,8 @@ class Plant {
         ]
 
         const idx = Math.floor(Math.random() * seeds.length);
-        // return seeds[idx];
-        return '\u10FB';
+        return seeds[idx];
+        // return '\u10FB';
     }
 }
 

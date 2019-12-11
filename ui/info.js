@@ -34,7 +34,7 @@ class Info extends UIComponent {
         this.term.moveTo(x, y);
 
         if (tile.plant) {
-            this.term(tile.plant.name.toLowerCase());
+            this.term(tile.plant.name);
         } else {
             this.term('dirt');
         }
