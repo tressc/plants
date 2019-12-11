@@ -33,16 +33,20 @@ class Menu extends UIComponent {
             if (this.store.state.activeComponent === this.name) {
                 if (['UP', 'DOWN'].includes(name)) {
                     this.moveSelect(name);
-                } else if (name === 'ENTER') {
+                } else if (name === 'ENTER' || name === 'ESCAPE') {
                     if (this.store.state.justChanged) {
                         return;
-                    }
-                    if (this.menuSelect === this.menuItems.length - 1) {
+                    } else if (this.menuSelect === 3) {
                         this.loadMask();
                         return;
+                    } else if (this.menuSelect === 1) {
+                        this.store.fire('changeFocus', 'items');
+                        return;
+                    } else {
+                        this.store.fire('changeFocus', 'field');
+                        this.store.fire('timeStart');
                     }
-                    this.store.fire('changeFocus', 'field');
-                    this.store.fire('timeStart');
+                    
                 }
             }
         });

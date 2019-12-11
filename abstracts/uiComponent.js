@@ -58,6 +58,7 @@ class UIComponent {
                     this.term.moveTo(x + width, y - 1 + i)('\u2503');
                 }
             }
+            this.term.moveTo(x + 1, y - 1)(' ' + this.name + ' ');
         };
     }
 

@@ -39,5 +39,12 @@ module.exports = {
         yOffset: 17,
         height: 3,
         width: 22
+    },
+    itemsConfig: {
+        name: 'items',
+        xOffset: 26,
+        yOffset: 11,
+        height: 9,
+        width: 15
     }
 }
