@@ -9,13 +9,6 @@ class Time {
             'trs',
             'fri',
             'sat'
-            // 'SUN',
-            // 'MON',
-            // 'TUE',
-            // 'WED',
-            // 'TRS',
-            // 'FRI',
-            // 'SAT'
         ]
         this.day = 0;
         this.dayName = 'sun';

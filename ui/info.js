@@ -38,14 +38,6 @@ class Info extends UIComponent {
         } else {
             this.term('dirt');
         }
-        // this.term.moveTo(x, y + 1)(`AGE: ${'0' + (idx % 10)} DAYS`);
-
-        // if (this.store.state.fruits.includes(idx)) {
-        //     this.term(' - ');
-        //     this.term.magenta('HARVEST');
-        // } else {
-        //     this.term('          ');
-        // }
 
         this.term.moveTo(x, y + 2)
         if (tile.plant && tile.status === 'dry') {

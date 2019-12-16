@@ -63,9 +63,10 @@ class Cursor extends UIComponent {
         const {x, y} = this.offset;
         const {cursorX, cursorY} = this.store.state;
 
-        this.term.white()
-        this.term.moveTo(x + cursorX * 3, y + cursorY * 2)('\u2824\u2824\u2824');
-        this.term.moveTo(x + cursorX * 3, y + cursorY * 2 + 2)('\u2809\u2809\u2809');
+        this.term.magenta();
+        this.term.moveTo(x + cursorX * 3, y + cursorY * 2)('\u2581\u2584\u2581');
+        this.term.moveTo(x + cursorX * 3, y + cursorY * 2 + 2)('\u2594\u2580\u2594');
+        this.term.white();
     }
 }
 

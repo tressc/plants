@@ -38,15 +38,11 @@ class Items extends UIComponent {
         for (let i = 0; i < heldItems.length; i++) {
             this.term.moveTo(x, y + i);
 
-            // if (i === menuSelect) {
-            //     this.term.bgWhite.black.bold(rightAlign(heldItems[i], width));
-            // } else {
             if (i === 2) {
                 this.term.magenta(rightAlign(heldItems[i], width));
             } else {
                 this.term.white(rightAlign(heldItems[i], width));
             }
-            // }
         }
         this.term.moveTo(x, y + 2).magenta('\u2605')
     }
