@@ -46,7 +46,7 @@ module.exports = {
         yOffset: 11,
         height: 9,
         width: 15,
-        heldItems: [
+        menuItems: [
             'watering can',
             'scythe',
             'rice seed',
