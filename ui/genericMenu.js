@@ -15,14 +15,24 @@ class GenericMenu extends UIComponent {
                     this.draw();
                     this.focusBorder();
                 } else {
+                    this.clearHighlight();
                     this.menuSelect = 0;
-                    this.clear();
-                    this.clearBorder();
+                    this.normalBorder();
                 }
             })
         }
 
+        this.draw();
+        this.normalBorder();
+        this.clearHighlight();
         this.collectInput();
+    }
+
+    clearHighlight() {
+        const { x, y } = this.offset;
+        const select = this.menuSelect;
+
+        this.term.moveTo(x, y + select).white(rightAlign(this.menuItems[select], this.size.width));
     }
 
     collectInput() {

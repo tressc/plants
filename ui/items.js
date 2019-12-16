@@ -19,10 +19,8 @@ class Items extends GenericMenu {
             }
         })
 
-        this.draw();
-        this.clearHighlight();
-        this.normalBorder();
         this.updateFavorite(this.favorite);
+        this.clearHighlight();
     }
 
     updateFavorite(newFav) {
