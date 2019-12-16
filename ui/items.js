@@ -6,12 +6,10 @@ class Items extends GenericMenu {
     constructor(store, term, config) {
         super(store, term, config, true);
 
-        this.favorite = 3;
-        this.hasCleared = true;
+        this.favorite = 1;
         
         this.store.addEvent('changeFocus', (name) => {
             if (name === this.name) {
-                this.hasCleared = false;
                 this.focusBorder();
                 this.draw();
             } else {
@@ -37,9 +35,8 @@ class Items extends GenericMenu {
 
         this.term.moveTo(x, y + select).white(rightAlign(this.menuItems[select], this.size.width));
 
-        if (this.hasCleared === false) {
+        if (this.menuSelect === this.favorite) {
             this.term.moveTo(x, y + select).magenta('\u2605');
-            this.hasCleared = true;
         }
     }
 
@@ -53,8 +50,6 @@ class Items extends GenericMenu {
                         return;
                     } else {
                         this.updateFavorite(this.menuSelect)
-                        this.store.fire('changeFocus', 'field');
-                        this.store.fire('timeStart');
                     }
                 } else if (name === 'ESCAPE') {
                     this.store.fire('changeFocus', 'field');
