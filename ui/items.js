@@ -22,10 +22,12 @@ class Items extends GenericMenu {
         this.draw();
         this.clearHighlight();
         this.normalBorder();
+        this.updateFavorite(this.favorite);
     }
 
     updateFavorite(newFav) {
         this.favorite = newFav;
+        this.store.setState({currentItem: this.menuItems[newFav]});
         this.draw();
     }
 
@@ -49,7 +51,7 @@ class Items extends GenericMenu {
                     if (this.store.state.justChanged) {
                         return;
                     } else {
-                        this.updateFavorite(this.menuSelect)
+                        this.updateFavorite(this.menuSelect);
                     }
                 } else if (name === 'ESCAPE') {
                     this.store.fire('changeFocus', 'field');
