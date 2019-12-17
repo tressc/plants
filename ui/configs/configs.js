@@ -21,7 +21,7 @@ module.exports = {
         width: 15,
         menuItems: [
             'character',
-            'item',
+            'items',
             'map',
             'save'
         ]
