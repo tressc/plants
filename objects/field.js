@@ -24,7 +24,21 @@ class Field {
             this.tiles.push(row);
         }
         this.store.setState({field: this.tiles});
+        this.store.addEvent('interact', ({x, y, item}) => {
+            if (item === 'watering can') {
+                this.tiles[y][x].water();
+                this.store.fire('updateInfo');
+            } else if (item === 'scythe') {
+                // TODO: this needs to first grab the plant and remove all its event subscriptions from the store!
+                // TODO: this should also harvest the plant if mature/bearing fruit
+                this.tiles[y][x].plant = null;
+                this.store.fire('updateInfo');
+                this.store.fire('updateField');
+            }
+        })
     }
+
+
 }
 
 module.exports = Field;

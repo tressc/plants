@@ -6,6 +6,7 @@ class Field extends UIComponent {
         super(store, term, config);
 
         this.store.addEvent('newDay', this.draw);
+        this.store.addEvent('updateField', this.draw);
 
         this.draw();
         this.focusBorder();
@@ -21,6 +22,13 @@ class Field extends UIComponent {
                     }
                     this.store.fire('changeFocus', 'menu');
                     this.store.fire('timePause');
+                } else if (name === ' ') {
+                    this.store.fire('interact', {
+                        x: this.store.state.cursorX,
+                        y: this.store.state.cursorY,
+                        item: this.store.state.currentItem
+                    });
+                    this.draw();
                 }
             }
         });

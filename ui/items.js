@@ -44,6 +44,7 @@ class Items extends GenericMenu {
         this.term.on( 'key' , (name, matches, data) => {
             if (this.store.state.activeComponent === this.name) {
                 if (['UP', 'DOWN'].includes(name)) {
+                    // TODO: add item info to info box
                     this.moveSelect(name);
                 } else if (name === 'ENTER') {
                     if (this.store.state.justChanged) {

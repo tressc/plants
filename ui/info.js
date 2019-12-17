@@ -15,7 +15,7 @@ class Info extends UIComponent {
             this.draw();
         })
         this.store.addEvent('newDay', this.draw);
-
+        this.store.addEvent('updateInfo', this.draw);
 
         this.draw();
         this.normalBorder();
