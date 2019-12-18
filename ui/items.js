@@ -4,20 +4,9 @@ const rightAlign = require('./utils/rightAlign');
 
 class Items extends GenericMenu {
     constructor(store, term, config) {
-        super(store, term, config, true);
+        super(store, term, config);
 
         this.favorite = 1;
-        
-        this.store.addEvent('changeFocus', (name) => {
-            if (name === this.name) {
-                this.focusBorder();
-                this.draw();
-            } else {
-                this.clearHighlight();
-                this.menuSelect = 0;
-                this.normalBorder();
-            }
-        })
 
         this.updateFavorite(this.favorite);
         this.clearHighlight();
@@ -31,12 +20,19 @@ class Items extends GenericMenu {
 
     clearHighlight() {
         const { x, y } = this.offset;
-        const select = this.menuSelect;
+        const { menuSelect, top } = this;
 
-        this.term.moveTo(x, y + select).white(rightAlign(this.menuItems[select], this.size.width));
+        let height;
+        if (top > 0) {
+            height = this.size.height - 1;
+        } else {
+            height = menuSelect;
+        }
+        this.term.moveTo(x, y + height).white(rightAlign(this.menuItems[menuSelect], this.size.width));
+
 
         if (this.menuSelect === this.favorite) {
-            this.term.moveTo(x, y + select).magenta('\u2605');
+            this.term.moveTo(x, y + menuSelect - top).magenta('\u2605');
         }
     }
 

@@ -17,8 +17,6 @@ class GenericMenu extends UIComponent {
                     this.focusBorder();
                 } else {
                     this.clearHighlight();
-                    this.menuSelect = 0;
-                    this.top = 0;
                     this.normalBorder();
                 }
             })
