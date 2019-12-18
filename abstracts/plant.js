@@ -14,7 +14,7 @@ class Plant {
 
         this.sprite = this.randomSeedSprite();
 
-        this.store.addEvent('newDay', () => {
+        this.newDayEvent = () => {
             if (this.dirt.status === 'wet') {
                 this.age += 1;
 
@@ -22,7 +22,13 @@ class Plant {
                     this.sprite = this.sprites[this.age];
                 }
             }
-        })
+        };
+
+        this.store.addEvent('newDay', this.newDayEvent)
+    }
+
+    kill() {
+        this.store.removeEvent('newDay', this.newDayEvent);
     }
 
     randomSeedSprite() {

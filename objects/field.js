@@ -29,9 +29,11 @@ class Field {
                 this.tiles[y][x].water();
                 this.store.fire('updateInfo');
             } else if (item === 'scythe') {
-                // TODO: this needs to first grab the plant and remove all its event subscriptions from the store!
                 // TODO: this should also harvest the plant if mature/bearing fruit
-                this.tiles[y][x].plant = null;
+                if (this.tiles[y][x].plant) {
+                    this.tiles[y][x].plant.kill();
+                    this.tiles[y][x].plant = null;
+                }
                 this.store.fire('updateInfo');
                 this.store.fire('updateField');
             }
