@@ -62,20 +62,20 @@ class Items extends GenericMenu {
 
     draw() {
         const { x, y } = this.offset;
-        const { menuItems, menuSelect, favorite } = this;
-        const { width } = this.size;
+        const { menuItems, menuSelect, favorite, top } = this;
+        const { width, height } = this.size;
 
-        for (let i = 0; i < menuItems.length; i++) {
+        for (let i = 0; i < height; i++) {
             this.term.moveTo(x, y + i);
 
-            if (i === menuSelect) {
-                this.term.bgWhite.black.bold(rightAlign(menuItems[i], width));
+            if (i + top === menuSelect) {
+                this.term.bgWhite.black.bold(rightAlign(menuItems[i + top], width));
             } else {
-                this.term.white(rightAlign(menuItems[i], width));
+                this.term.white(rightAlign(menuItems[i + top], width));
             }
 
-            if (i === favorite) {
-                if (i === menuSelect) {
+            if (i + top === favorite) {
+                if (i + top === menuSelect) {
                     this.term.moveTo(x, y + i).bgWhite.black('\u2605');
                 } else {
                     this.term.moveTo(x, y + i).magenta('\u2605');
