@@ -4,7 +4,7 @@
   "description": "plants game",
   "main": "game.js",
   "dependencies": {
-    "terminal-kit": "^1.31.7"
+    "terminal-kit": "^3.0.0"
   },
   "devDependencies": {},
   "scripts": {
